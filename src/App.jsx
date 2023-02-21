@@ -16,7 +16,8 @@ function App() {
   // show only 5 history entries
   const limitedEntries = searchHistory.slice(0, 5);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const currentInputValue = inputRef.current.value;
 
     // empty input check
@@ -55,8 +56,7 @@ function App() {
   // submit on Enter keypress
   const enterKeyHandler = (e) => {
     if (e.key === "Enter") {
-      e.preventDefault();
-      handleSubmit();
+      handleSubmit(e);
       setInputValue("");
     }
   };
@@ -64,7 +64,7 @@ function App() {
   const handleClick = (e) => {
     setInputValue(e.target.innerText);
     inputRef.current.value = e.target.innerText;
-    handleSubmit();
+    handleSubmit(e);
   };
 
   const inputClickHandler = () => {
@@ -81,6 +81,7 @@ function App() {
           enterKeyHandler={enterKeyHandler}
           inputClickHandler={inputClickHandler}
         />
+        <button type="submit">Submit</button>
       </form>
       <ErrorMessage error={error} />
 
