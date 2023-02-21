@@ -32,9 +32,11 @@ function App() {
     )
       .then((response) => {
         setError("");
+
         if (response.ok) {
           return response.json();
         }
+
         setError("Enter a valid place name");
         throw new Error("Enter a valid place name");
       })
@@ -49,7 +51,7 @@ function App() {
         }
       })
       .catch((error) => {
-        console.log(error);
+        throw new Error("Something went wrong", error);
       });
   };
 
@@ -58,6 +60,7 @@ function App() {
     if (e.key === "Enter") {
       e.preventDefault();
       handleSubmit();
+      setInputValue("");
     }
   };
 
@@ -65,6 +68,10 @@ function App() {
     setInputValue(e.target.innerText);
     inputRef.current.value = e.target.innerText;
     handleSubmit();
+  };
+
+  const inputClickHandler = (e) => {
+    setInputValue("");
   };
 
   return (
@@ -75,6 +82,7 @@ function App() {
           inputRef={inputRef}
           setInputValue={setInputValue}
           enterKeyHandler={enterKeyHandler}
+          inputClickHandler={inputClickHandler}
         />
       </form>
       <ErrorMessage error={error} />
