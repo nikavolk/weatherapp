@@ -62,13 +62,13 @@ function App() {
     }
   };
 
-  const handleClick = (e) => {
+  const handleHistoryClick = (e) => {
     setInputValue(e.target.innerText);
     inputRef.current.value = e.target.innerText;
     handleSubmit(e);
   };
 
-  const inputClickHandler = () => {
+  const handleInputClick = () => {
     setInputValue("");
   };
 
@@ -80,7 +80,7 @@ function App() {
           inputRef={inputRef}
           setInputValue={setInputValue}
           enterKeyHandler={enterKeyHandler}
-          inputClickHandler={inputClickHandler}
+          handleInputClick={handleInputClick}
         />
         <button type="submit">Submit</button>
       </form>
@@ -88,14 +88,10 @@ function App() {
 
       <SearchHistory
         limitedEntries={limitedEntries}
-        handleClick={handleClick}
+        handleHistoryClick={handleHistoryClick}
       />
 
-      <LocationData
-        data={data}
-        handleClick={handleClick}
-        isLoading={isLoading}
-      />
+      <LocationData data={data} isLoading={isLoading} />
     </main>
   );
 }

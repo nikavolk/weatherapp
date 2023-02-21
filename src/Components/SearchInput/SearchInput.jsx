@@ -5,7 +5,7 @@ const SearchInput = ({
   inputRef,
   setInputValue,
   enterKeyHandler,
-  inputClickHandler,
+  handleInputClick,
 }) => {
   return (
     <input
@@ -15,7 +15,7 @@ const SearchInput = ({
       onChange={(e) => setInputValue(e.target.value)}
       placeholder="Enter name of a city"
       onKeyDown={enterKeyHandler}
-      onClick={inputClickHandler}
+      onClick={handleInputClick}
     />
   );
 };

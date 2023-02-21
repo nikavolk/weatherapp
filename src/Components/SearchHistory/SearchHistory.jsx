@@ -1,4 +1,4 @@
-const SearchHistory = ({ limitedEntries, handleClick }) => {
+const SearchHistory = ({ limitedEntries, handleHistoryClick }) => {
   if (limitedEntries.length > 0) {
     return (
       <div>
@@ -6,7 +6,7 @@ const SearchHistory = ({ limitedEntries, handleClick }) => {
         <ul>
           {limitedEntries.map((entry, i) => (
             <li key={i}>
-              <a href={void 0} onClick={handleClick}>
+              <a href={void 0} onClick={handleHistoryClick}>
                 {entry}
               </a>
             </li>
