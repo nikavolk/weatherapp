@@ -28,11 +28,14 @@ searches which contain a link to their respective search term.
 npm install
 ```
 
-4. Create .env file and enter your OpenWeatherMap API key:
+4. Create .env file in the project root and paste the below line
+   into the file:
 
 ```sh
-VITE_API_KEY=*YOUR API KEY HERE*
+VITE_API_KEY=<YOUR API KEY HERE>
 ```
+
+Replace the above placeholder text with your API key.
 
 5. Run the project:
 
