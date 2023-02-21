@@ -39,6 +39,7 @@ function App() {
         }
 
         setError("Enter a valid place name");
+        setIsLoading(false);
         throw new Error("Enter a valid place name");
       })
       .then((data) => {
