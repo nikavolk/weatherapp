@@ -22,6 +22,9 @@ const LocationData = ({ data, isLoading }) => {
           <TemperatureData data={data.main.temp_max}>
             Maximum temperature
           </TemperatureData>
+          <li>
+            <span>Humidity:</span> {data.main.humidity}%
+          </li>
         </ul>
       </>
     );
