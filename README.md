@@ -32,7 +32,7 @@ npm install
    into the file:
 
 ```sh
-VITE_API_KEY=<YOUR API KEY HERE>
+VITE_API_KEY=YOUR API KEY HERE
 ```
 
 Replace the above placeholder text with your API key.
