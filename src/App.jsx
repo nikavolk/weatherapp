@@ -25,7 +25,7 @@ function App() {
       setError("Input cannot be empty");
       return;
     }
-
+    setIsLoading(true);
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${currentInputValue}&units=metric&appid=${
         import.meta.env.VITE_API_KEY
