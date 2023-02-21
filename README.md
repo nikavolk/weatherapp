@@ -28,13 +28,19 @@ searches which contain a link to their respective search term.
 npm install
 ```
 
-4. Run the project:
+4. Create .env file and enter your OpenWeatherMap API key:
+
+```sh
+VITE_API_KEY=*YOUR API KEY HERE*
+```
+
+5. Run the project:
 
 ```sh
 npm run dev
 ```
 
-5. Open your browser and go to url:
+6. Open your browser and go to url:
 
 ```sh
 http://localhost:5173/
