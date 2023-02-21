@@ -34,6 +34,12 @@ npm install
 npm run dev
 ```
 
+5. Open your browser and go to url:
+
+```sh
+http://localhost:5173/
+```
+
 ## Contact
 
 Nika Volk - nika.volkee@gmail.com
