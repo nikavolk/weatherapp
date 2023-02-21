@@ -50,7 +50,7 @@ function App() {
         }
       })
       .catch((error) => {
-        throw new Error("Something went wrong", error);
+        console.log(error);
       });
   };
 
