@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
-import LocationData from "./Components/LocationData";
-import SearchHistory from "./Components/SearchHistory";
+import LocationData from "./Components/LocationData/LocationData";
+import SearchHistory from "./Components/SearchHistory/SearchHistory";
+import "./App.style.scss";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
@@ -75,7 +76,7 @@ function App() {
   };
 
   return (
-    <div>
+    <main>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -95,7 +96,7 @@ function App() {
         handleClick={handleClick}
         isLoading={isLoading}
       />
-    </div>
+    </main>
   );
 }
 
