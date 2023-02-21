@@ -40,14 +40,11 @@ function App() {
         setError("Enter a valid place name");
         throw new Error("Enter a valid place name");
       })
-      .then((responseJson) => {
-        setData(responseJson);
+      .then((data) => {
+        setData(data);
         setIsLoading(false);
-        if (!searchHistory.includes(responseJson.name)) {
-          setSearchHistory((searchHistory) => [
-            responseJson.name,
-            ...searchHistory,
-          ]);
+        if (!searchHistory.includes(data.name)) {
+          setSearchHistory((searchHistory) => [data.name, ...searchHistory]);
         }
       })
       .catch((error) => {
