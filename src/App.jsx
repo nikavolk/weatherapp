@@ -41,7 +41,7 @@ function App() {
       .then((responseJson) => {
         setData(responseJson);
         setIsLoading(false);
-        if (!searchHistory.includes(currentInputValue)) {
+        if (!searchHistory.includes(responseJson.name)) {
           setSearchHistory((searchHistory) => [
             responseJson.name,
             ...searchHistory,
