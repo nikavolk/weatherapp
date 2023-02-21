@@ -25,48 +25,32 @@ function App() {
       return;
     }
 
-    const getData = async () => {
-      setIsLoading(true);
-
-      // get geocoding data for the input
-      const getPlace = await fetch(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${currentInputValue}&limit=1&appid=${
-          import.meta.env.VITE_API_KEY
-        }`,
-      );
-      const responseGetPlace = await getPlace.json();
-
-      // get geocoded place data
-      if (responseGetPlace.length > 0) {
-        const getPlaceData = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${
-            responseGetPlace[0].lat
-          }&lon=${responseGetPlace[0].lon}&units=metric&appid=${
-            import.meta.env.VITE_API_KEY
-          }`,
-        );
-
-        const responseGetPlaceData = await getPlaceData.json();
-
-        setData(responseGetPlaceData);
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${currentInputValue}&units=metric&appid=${
+        import.meta.env.VITE_API_KEY
+      }`,
+    )
+      .then((response) => {
+        setError("");
+        if (response.ok) {
+          return response.json();
+        }
+        setError("Enter a valid place name");
+        throw new Error("Enter a valid place name");
+      })
+      .then((responseJson) => {
+        setData(responseJson);
         setIsLoading(false);
         if (!searchHistory.includes(currentInputValue)) {
           setSearchHistory((searchHistory) => [
-            currentInputValue,
+            responseJson.name,
             ...searchHistory,
           ]);
         }
-
-        setInputValue("");
-        setError("");
-      } else {
-        setError("Enter a valid place name");
-        setIsLoading(false);
-        setInputValue("");
-        throw new Error("Enter a valid place name");
-      }
-    };
-    getData();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   // submit on Enter keypress
