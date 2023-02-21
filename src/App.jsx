@@ -67,7 +67,7 @@ function App() {
     handleSubmit();
   };
 
-  const inputClickHandler = (e) => {
+  const inputClickHandler = () => {
     setInputValue("");
   };
 
