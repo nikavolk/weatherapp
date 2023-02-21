@@ -1,22 +1,31 @@
-const LocationData = ({ data, error, isLoading }) => {
+import { TemperatureData } from "../TemperatureData/TemperatureData";
+
+const LocationData = ({ data, isLoading }) => {
   if (isLoading) {
     return <h2>Loading</h2>;
   }
 
-  return (
-    <>
-      <h1>{data && data.name}</h1>
-      <div>{data && `Current temperature: ${Math.round(data.main.temp)}`}</div>
-      <div>{data && `Feels like: ${Math.round(data.main.feels_like)}`}</div>
-      <div>
-        {data && `Minimum temperature: ${Math.round(data.main.temp_min)}`}
-      </div>
-      <div>
-        {data && `Maximum temperature: ${Math.round(data.main.temp_max)}`}
-      </div>
-      {error && `Error: ${error}`}
-    </>
-  );
+  if (data) {
+    return (
+      <>
+        <h1>{data.name}</h1>
+        <ul>
+          <TemperatureData data={data.main.temp}>
+            Current temperature
+          </TemperatureData>
+          <TemperatureData data={data.main.feels_like}>
+            Feels like
+          </TemperatureData>
+          <TemperatureData data={data.main.temp_min}>
+            Minimum temperature
+          </TemperatureData>
+          <TemperatureData data={data.main.temp_max}>
+            Maximum temperature
+          </TemperatureData>
+        </ul>
+      </>
+    );
+  }
 };
 
 export default LocationData;

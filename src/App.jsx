@@ -2,6 +2,8 @@ import { useState, useRef } from "react";
 import LocationData from "./Components/LocationData/LocationData";
 import SearchHistory from "./Components/SearchHistory/SearchHistory";
 import "./App.style.scss";
+import ErrorMessage from "./Components/ErrorMessage/ErrorMessage";
+import SearchInput from "./Components/SearchInput/SearchInput";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
@@ -78,21 +80,22 @@ function App() {
   return (
     <main>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={inputValue}
-          ref={inputRef}
-          onChange={(e) => setInputValue(e.target.value)}
-          placeholder="Enter name of a city"
-          onKeyDown={enterKeyHandler}
+        <SearchInput
+          inputValue={inputValue}
+          inputRef={inputRef}
+          setInputValue={setInputValue}
+          enterKeyHandler={enterKeyHandler}
         />
       </form>
+      <ErrorMessage error={error} />
 
-      <SearchHistory limitedEntries={limitedEntries} />
+      <SearchHistory
+        limitedEntries={limitedEntries}
+        handleClick={handleClick}
+      />
 
       <LocationData
         data={data}
-        error={error}
         handleClick={handleClick}
         isLoading={isLoading}
       />
