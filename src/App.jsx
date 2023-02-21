@@ -13,10 +13,13 @@ function App() {
   const [error, setError] = useState(null);
   const inputRef = useRef(null);
 
+  // show only 5 history entries
   const limitedEntries = searchHistory.slice(0, 5);
 
   const handleSubmit = () => {
     const currentInputValue = inputRef.current.value;
+
+    // empty input check
     if (inputValue === "" && currentInputValue === "") {
       setError("Input cannot be empty");
       return;
@@ -25,6 +28,7 @@ function App() {
     const getData = async () => {
       setIsLoading(true);
 
+      // get geocoding data for the input
       const getPlace = await fetch(
         `http://api.openweathermap.org/geo/1.0/direct?q=${currentInputValue}&limit=1&appid=${
           import.meta.env.VITE_API_KEY
@@ -32,6 +36,7 @@ function App() {
       );
       const responseGetPlace = await getPlace.json();
 
+      // get geocoded place data
       if (responseGetPlace.length > 0) {
         const getPlaceData = await fetch(
           `https://api.openweathermap.org/data/2.5/weather?lat=${
@@ -64,6 +69,7 @@ function App() {
     getData();
   };
 
+  // submit on Enter keypress
   const enterKeyHandler = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
