@@ -1,9 +1,5 @@
 import "./ErrorMessage.style.scss";
 
-const ErrorMessage = ({ error }) => {
-  if (error) {
-    return <div className="error">{error}</div>;
-  }
+export const ErrorMessage = ({ children }) => {
+  return <div className="error">{children}</div>;
 };
-
-export default ErrorMessage;

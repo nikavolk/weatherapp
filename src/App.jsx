@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import LocationData from "./Components/LocationData/LocationData";
 import SearchHistory from "./Components/SearchHistory/SearchHistory";
 import "./App.style.scss";
-import ErrorMessage from "./Components/ErrorMessage/ErrorMessage";
+import { ErrorMessage } from "./Components/ErrorMessage/ErrorMessage";
 import SearchInput from "./Components/SearchInput/SearchInput";
 
 function App() {
@@ -84,7 +84,7 @@ function App() {
         />
         <button type="submit">Submit</button>
       </form>
-      <ErrorMessage error={error} />
+      {error && <ErrorMessage>{error}</ErrorMessage>}
 
       <SearchHistory
         limitedEntries={limitedEntries}
