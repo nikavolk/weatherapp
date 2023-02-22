@@ -19,6 +19,9 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const currentInputValue = inputRef.current.value;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${currentInputValue}&units=metric&appid=${
+      import.meta.env.VITE_API_KEY
+    }`;
 
     // empty input check
     if (inputValue === "" && currentInputValue === "") {
@@ -26,11 +29,8 @@ function App() {
       return;
     }
     setIsLoading(true);
-    fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${currentInputValue}&units=metric&appid=${
-        import.meta.env.VITE_API_KEY
-      }`,
-    )
+
+    fetch(url)
       .then((response) => {
         setError("");
 
