@@ -1,12 +1,6 @@
-const SearchHistory = ({
-  limitedEntries,
-  setInputValue,
-  inputRef,
-  handleSubmit,
-}) => {
+const SearchHistory = ({ limitedEntries, setInputValue, handleSubmit }) => {
   const handleHistoryClick = (e) => {
     setInputValue(e.target.innerText);
-    inputRef.current.value = e.target.innerText;
     handleSubmit(e);
   };
   if (limitedEntries.length > 0) {

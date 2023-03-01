@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import LocationData from "./Components/LocationData/LocationData";
 import SearchHistory from "./Components/SearchHistory/SearchHistory";
 import "./App.style.scss";
@@ -11,20 +11,18 @@ function App() {
   const [data, setData] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const inputRef = useRef(null);
 
   // show only 5 history entries
   const limitedEntries = searchHistory.slice(0, 5);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const currentInputValue = inputRef.current.value;
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${currentInputValue}&units=metric&appid=${
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&units=metric&appid=${
       import.meta.env.VITE_API_KEY
     }`;
 
     // empty input check
-    if (inputValue === "" && currentInputValue === "") {
+    if (inputValue === "") {
       setError("Input cannot be empty");
       return;
     }
@@ -66,17 +64,14 @@ function App() {
     <main>
       <SearchInput
         inputValue={inputValue}
-        inputRef={inputRef}
         setInputValue={setInputValue}
         handleSubmit={handleSubmit}
       />
-      <button type="submit">Submit</button>
       {error && <ErrorMessage>{error}</ErrorMessage>}
 
       <SearchHistory
         limitedEntries={limitedEntries}
         setInputValue={setInputValue}
-        inputRef={inputRef}
         handleSubmit={handleSubmit}
       />
 

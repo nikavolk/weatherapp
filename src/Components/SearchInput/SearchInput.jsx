@@ -1,6 +1,6 @@
 import "./SearchInput.style.scss";
 
-const SearchInput = ({ inputValue, inputRef, setInputValue, handleSubmit }) => {
+const SearchInput = ({ inputValue, setInputValue, handleSubmit }) => {
   const handleInputClick = () => {
     setInputValue("");
   };
@@ -14,16 +14,16 @@ const SearchInput = ({ inputValue, inputRef, setInputValue, handleSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={(e) => handleSubmit(e)}>
       <input
         type="text"
         value={inputValue}
-        ref={inputRef}
         onChange={(e) => setInputValue(e.target.value)}
         placeholder="Enter name of a city"
         onKeyDown={enterKeyHandler}
         onClick={handleInputClick}
       />
+      <button type="submit">Submit</button>
     </form>
   );
 };
