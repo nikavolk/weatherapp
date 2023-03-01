@@ -16,7 +16,7 @@ function App() {
   // show only 5 history entries
   const limitedEntries = searchHistory.slice(0, 5);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const currentInputValue = inputRef.current.value;
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${currentInputValue}&units=metric&appid=${
@@ -30,7 +30,7 @@ function App() {
     }
     setIsLoading(true);
 
-    fetch(url)
+    await fetch(url)
       .then((response) => {
         setError("");
 
@@ -56,15 +56,13 @@ function App() {
 
   return (
     <main>
-      <form onSubmit={handleSubmit}>
-        <SearchInput
-          inputValue={inputValue}
-          inputRef={inputRef}
-          setInputValue={setInputValue}
-          handleSubmit={handleSubmit}
-        />
-        <button type="submit">Submit</button>
-      </form>
+      <SearchInput
+        inputValue={inputValue}
+        inputRef={inputRef}
+        setInputValue={setInputValue}
+        handleSubmit={handleSubmit}
+      />
+      <button type="submit">Submit</button>
       {error && <ErrorMessage>{error}</ErrorMessage>}
 
       <SearchHistory
