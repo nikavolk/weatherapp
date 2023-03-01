@@ -1,12 +1,17 @@
 import "./SearchInput.style.scss";
 
-const SearchInput = ({
-  inputValue,
-  inputRef,
-  setInputValue,
-  enterKeyHandler,
-  handleInputClick,
-}) => {
+const SearchInput = ({ inputValue, inputRef, setInputValue, handleSubmit }) => {
+  const handleInputClick = () => {
+    setInputValue("");
+  };
+
+  const enterKeyHandler = (e) => {
+    if (e.key === "Enter") {
+      handleSubmit(e);
+      setInputValue("");
+    }
+  };
+
   return (
     <input
       type="text"

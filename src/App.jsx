@@ -55,22 +55,6 @@ function App() {
   };
 
   // submit on Enter keypress
-  const enterKeyHandler = (e) => {
-    if (e.key === "Enter") {
-      handleSubmit(e);
-      setInputValue("");
-    }
-  };
-
-  const handleHistoryClick = (e) => {
-    setInputValue(e.target.innerText);
-    inputRef.current.value = e.target.innerText;
-    handleSubmit(e);
-  };
-
-  const handleInputClick = () => {
-    setInputValue("");
-  };
 
   return (
     <main>
@@ -79,8 +63,7 @@ function App() {
           inputValue={inputValue}
           inputRef={inputRef}
           setInputValue={setInputValue}
-          enterKeyHandler={enterKeyHandler}
-          handleInputClick={handleInputClick}
+          handleSubmit={handleSubmit}
         />
         <button type="submit">Submit</button>
       </form>
@@ -88,7 +71,9 @@ function App() {
 
       <SearchHistory
         limitedEntries={limitedEntries}
-        handleHistoryClick={handleHistoryClick}
+        setInputValue={setInputValue}
+        inputRef={inputRef}
+        handleSubmit={handleSubmit}
       />
 
       <LocationData data={data} isLoading={isLoading} />
