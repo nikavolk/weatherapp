@@ -38,6 +38,14 @@ function App() {
           return response.json();
         }
 
+        if (response.status === 404) {
+          setError("This city or town does not exist. Enter a valid name!");
+          setIsLoading(false);
+          throw new Error(
+            "This city or town does not exist. Enter a valid name!",
+          );
+        }
+
         setError("Enter a valid place name");
         setIsLoading(false);
         throw new Error("Enter a valid place name");
