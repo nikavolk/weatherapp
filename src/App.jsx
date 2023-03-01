@@ -54,8 +54,6 @@ function App() {
       });
   };
 
-  // submit on Enter keypress
-
   return (
     <main>
       <form onSubmit={handleSubmit}>

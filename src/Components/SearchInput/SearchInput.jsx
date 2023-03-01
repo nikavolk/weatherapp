@@ -5,6 +5,7 @@ const SearchInput = ({ inputValue, inputRef, setInputValue, handleSubmit }) => {
     setInputValue("");
   };
 
+  // submit on Enter key press
   const enterKeyHandler = (e) => {
     if (e.key === "Enter") {
       handleSubmit(e);
